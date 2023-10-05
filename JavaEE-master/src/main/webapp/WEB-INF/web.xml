@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+<!--   les parametres de configuration concerne chaque servlet-->
+<!--    <servlet>-->
+<!--        <servlet-name>Myservlet</servlet-name>-->
+<!--        <servlet-class>com.example.coursejee.ContextsAndConfigParameters.Myservlet</servlet-class>-->
+
+<!--        <init-param>-->
+<!--            <param-name>Config Parameter</param-name>-->
+<!--            <param-value>Par de Config de Myservlet</param-value>-->
+<!--        </init-param>-->
+
+<!--        <init-param>-->
+<!--            <param-name>ConfigParameter2</param-name>-->
+<!--            <param-value>Par de Config de Myservlet 2</param-value>-->
+<!--        </init-param>-->
+
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Myservlet</servlet-name>-->
+<!--        <url-pattern>/servlet</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+
+<!--    les parametres de contexte appartient a toute l application et non pas une seule servlet -->
+    <context-param>
+        <param-name>ParametreGenerale</param-name>
+        <param-value>ContexteParametre</param-value>
+    </context-param>
+
+
+
+
+<!--    Deployement de filter2 avant Myfilter -->
+    <filter>
+        <filter-name>FiltreAvant</filter-name>
+        <filter-class>com.example.coursejee.Filtres.MyFilter2</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FiltreAvant</filter-name>
+        <url-pattern>/Myservlet</url-pattern>
+    </filter-mapping>
+
+
+    <!--    Deployement de filtre se fait de la meme maniere d'une servlet -->
+    <filter>
+        <filter-name>Filtre</filter-name>
+        <filter-class>com.example.coursejee.Filtres.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filtre</filter-name>
+        <url-pattern>/Myservlet</url-pattern>
+    </filter-mapping>
+
+    
+</web-app>
